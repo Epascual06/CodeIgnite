@@ -21,17 +21,7 @@
 
     <link href="/dashboard/images/favicon.png" rel="icon" type="image/png" />
 
-    <script type="text/javascript">
-      //<![CDATA[
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-76894-1', 'auto');
-        ga('send', 'pageview');
-      //]]>
-    </script>
   </head>
 
   <body class="es es_faq">
@@ -63,6 +53,7 @@
               <li class="active"><a href="/dashboard/es/faq.html">Preguntas frecuentes</a></li>
               <li class=""><a href="/dashboard/es/howto.html">HOW-TO Guides</a></li>
               <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
+              <li class=""><a href="/phpmyadmin/">phpMyAdmin</a></li>
           </ul>
         </section>
       </nav>
@@ -96,6 +87,10 @@
       <p>Descomprime los archivos zip en la carpeta que elijas. XAMPP es extraido en el subdirectorio "C:\xampp" en el directorio de destino seleccionado. Ahora ejecuta el fichero "setup_xampp.bat" para ajustar la configuración de XAMPP en tu sistema.</p>
       <p>Si elijes un directorio raíz, como "C:\", no debes ejecutar "setup_xampp.bat".</p>
       <p>Al igual que con el instalador, puedes usar ahora el "XAMPP Control Panel" para tareas adicionales.</p>
+      </dd>
+      <dt>Does XAMPP include MySQL or MariaDB?</dt>
+      <dd>
+      <p>Since XAMPP 5.5.30 and 5.6.14, XAMPP ships MariaDB instead of MySQL. The commands and tools are the same for both.</p>
       </dd>
       <dt>¿Cómo inicio XAMPP sin instalar?</dt>
       <dd>
@@ -137,7 +132,7 @@
       <dd>
       <p>Escribe la siguiente URL en tu navegador favorito:</p>
       <p><code>http://localhost/</code> o  <code>http://127.0.0.1/</code> </p>
-      <p>Ahora deberías ver la página de inicio de XAMPP, que contiene algunos links para comprobar el estado del software instalado y algunos ejemplos de programación.</p>
+      <p>Now you should see the XAMPP start page.</p>
         <img src="/dashboard/images/screenshots/xampp-windows-start.jpg" />
       </dd>
       <dt>¿Cómo puedo instalar un servidor como servicio?</dt>
@@ -350,8 +345,7 @@ EnableMMAP off</code></p>
 
       <dt>¿Cómo puedo establecer la contraseña de root de MySQL?</dt>
       <dd>
-      <p>La forma más fácil es usar la consola de seguridad, a la que puedes acceder a través de http://localhost/security/. Esta consola crea una contraseña para el usuario root de MySQL y ajusta la configuración de phpMyAdmin.</p>
-      <p>Otra forma es configurarlo con el "XAMPP Shell" (línea de comandos). Abre el shell y ejecuta este comando:<code>mysqladmin.exe -u root password secret</code></p>
+      <p>Configure it with the "XAMPP Shell" (command prompt). Open the shell from the XAMPP control pane and execute this command:<code>mysqladmin.exe -u root password secret</code>This sets the root password to 'secret'.</p>
       </dd>
 
       <dt>¿Puedo usar mi propio servidor de MySQL?</dt>
@@ -361,11 +355,24 @@ EnableMMAP off</code></p>
 
       <dt>¿Cómo restrinjo el acceso a phpMyAdmin desde el exterior?</dt>
       <dd>
-      <p>En una configuración básica de XAMPP, phpMyAdmin tiene acceso público.</p>
-      <p>Puedes cambiar la contraseña de root de MySQL y elegir el método de autenticación para phpMyAdmin desde la consola de seguridad en http://localhost/security/</p>
+      <p>In the basic configuration of XAMPP, phpMyAdmin is accessible only from the same host that XAMPP is running on, at http://127.0.0.1 or http://localhost.</p>
       <p>Para acceder al servidor MySQL, phpMyAdmin te preguntará por un nombre de usuario y contraseña. No olvides fijar la contraseña del usuario "root" antes.</p>
       </dd>
 
+      <dt>How do I enable access to phpMyAdmin from the outside?</dt>
+      <dd>
+      <p>In the basic configuration of XAMPP, phpMyAdmin is accessible only from the same host that XAMPP is running on, at http://127.0.0.1 or http://localhost.</p>
+      <p>To enable remote access to phpMyAdmin, follow these steps:</p>
+      <ul>
+        <li>Edit the apache\conf\extra\httpd-xampp.conf file in your XAMPP installation directory.</li>
+        <li>Within this file, find the line below and update it to remove 'phpmyadmin' from the list of locations. 
+        <p><code>
+        &lt;LocationMatch "^/(?i:(?:xampp|security|licenses|phpmyadmin|webalizer|server-status|server-info))"&gt;</code></p>
+        </li>
+        <li>Restart the Apache server using the XAMPP control panel.</li>
+      </ul>
+      </dd>
+      
       <dt>¿Dónde se encuentra el soporte a IMAP para PHP?</dt>
       <dd>
       <p>Por defecto, el soporte a IMAP para PHP está desactivado en XAMPP debido a algunos extraños errores de inicialización con algunas versiones home, como Windows 98. Si trabajas con sistemas NT, puedes abrir el fichero "\xampp\php\php.ini" para activar la extensión php eliminando el punto y coma inicial en la línea ";extension=php_imap.dll". Debería ser:</br>
@@ -399,11 +406,32 @@ EnableMMAP off</code></p>
       <p>Para ello, hemos abierto un topic en el foro con ejemplos y posibles soluciones: <a href="https://community.apachefriends.org/f/viewtopic.php?t=3012">Topic de MCrypt</a></p>
       </dd>
 
-      <dt>¿Funciona Microsoft Activer Server Pages (ASP) con XAMPP?</dt>
+      <dt>¿Funciona Microsoft Active Server Pages (ASP) con XAMPP?</dt>
       <dd>
       <p>No. Y Apache::ASP con el Add-On de Perl tampoco. Apache::ASP sólo usa Perl-Script pero el ASP de Internet Information Server (IIS) también usa VBScript. Pero para ASP .NET hay un módulo de Apache de terceros disponible.</p>
       </dd>
 
+      <dt>How can I get XAMPP working on port 80 under Windows 10?</dt>
+      <dd>
+      <p>By default, Windows 10 starts Microsoft IIS on port 80, which is the same default port used by Apache in XAMPP. As a result, Apache cannot bind to port 80.</p>
+      <p>To disable IIS from running on port 80, follow these steps:</p>
+      <ul>
+        <li>Open the Services panel in Computer Management.</li>
+        <li>Search for the 'World Wide Web Publishing Service' and select it.</li>
+        <li>Click the link to 'Stop the service'.</li>
+        <li>Double-click the service name.</li>
+        <li>In the 'Startup type' field, change the startup type to 'Disabled'.</li>
+        <li>Click 'OK' to save your changes.</li>
+      </ul>
+      <p>You should now be able to start Apache in XAMPP on port 80.</p>
+      <p>For more information, refer to the 'Troubleshoot Apache Startup Problems' guide included with XAMPP or <a href='https://community.apachefriends.org/f/viewtopic.php?f=16&t=71620'>this forum post</a>.</p>
+      </dd>
+      
+      <dt>How can I use Microsoft Edge to access local addresses under Windows 10?</dt>
+      <dd>
+      <p>If your local machine has the host name 'myhost', you will not be able to access URLs such as http://myhost in Microsoft Edge. To resolve this, you should instead use the addresses http://127.0.0.1 or http://localhost.</p>
+      </dd>
+      
       </dd>
       </dd>
     </dl>

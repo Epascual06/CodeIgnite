@@ -32,6 +32,12 @@ public function set_news()
 
     return $this->db->insert('news', $data);
 }
+
+public function delete_posts($id){
+    $this->db->where('id',$id);
+    $this->db->delete('news');
+    return true;
+}
 }
 
 

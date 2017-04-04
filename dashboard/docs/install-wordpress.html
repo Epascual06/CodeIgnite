@@ -21,17 +21,7 @@
 
     <link href="/dashboard/images/favicon.png" rel="icon" type="image/png" />
 
-    <script type="text/javascript">
-      //<![CDATA[
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-76894-1', 'auto');
-        ga('send', 'pageview');
-      //]]>
-    </script>
   </head>
 
   <body class="docs docs_install-wordpress">
@@ -63,6 +53,7 @@
               <li class=""><a href="/dashboard/faq.html">FAQs</a></li>
               <li class="active"><a href="/dashboard/howto.html">HOW-TO Guides</a></li>
               <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
+              <li class=""><a href="/phpmyadmin/">phpMyAdmin</a></li>
           </ul>
         </section>
       </nav>
@@ -112,14 +103,14 @@ This tutorial doesn&#8217;t make a lot of assumptions, but the few that it does 
 <div class="ulist">
 <ul>
 <li>
-<p>First, it assumes that you have a working XAMPP installation on Windows, and that your XAMPP installation (including MySQL) is currently running. In case you don&#8217;t have this, <a href="https://www.apachefriends.org/download.html">download and install XAMPP</a> and then, once it&#8217;s installed, check that it&#8217;s all working by browsing to <a href="http://localhost" class="bare">http://localhost</a>. You should see something like this:</p>
+<p>First, it assumes that you have a working XAMPP installation on Windows, and that your XAMPP installation (including MySQL/MariaDB) is currently running. In case you don&#8217;t have this, <a href="https://www.apachefriends.org/download.html">download and install XAMPP</a> and then, once it&#8217;s installed, check that it&#8217;s all working by browsing to <a href="http://localhost" class="bare">http://localhost</a>. You should see something like this:</p>
 <div class="imageblock">
 <div class="content">
 <img src="./images/install-wordpress/image01.png" alt="image01">
 </div>
 </div>
 <div class="paragraph">
-<p>You can also check that both MySQL and Apache are running using the XAMPP control panel icon in the Windows taskbar:</p>
+<p>You can also check that both MySQL/MariaDB and Apache are running using the XAMPP control panel icon in the Windows taskbar:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -189,7 +180,7 @@ This tutorial doesn&#8217;t make a lot of assumptions, but the few that it does 
 </div>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll also see three password fields. In the first field, enter the existing MySQL password for XAMPP; this  is needed by the setup wizard so that it can create the necessary WordPress tables in your MySQL database. In the remaining two fields, enter a password (minimum 6 characters) for the WordPress administrator account.</p>
+<p>You&#8217;ll also see three password fields. In the first field, enter the existing MySQL/MariaDB password for XAMPP; this  is needed by the setup wizard so that it can create the necessary WordPress tables in your MySQL/MariaDB database. In the remaining two fields, enter a password (minimum 6 characters) for the WordPress administrator account.</p>
 </div>
 </li>
 <li>
