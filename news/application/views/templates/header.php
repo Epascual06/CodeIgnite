@@ -19,15 +19,15 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href= "<? php echo base_url(); ?> pages/view/home ">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="<? php echo base_url(); ?> pages/view/about ">About</a></li>
-        <li><a href="<? php echo base_url(); ?> news">View News</a></li>
+        <li><a href= "<?php echo base_url();?>pages/view/home">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="<?php echo base_url();?>pages/view/about">About</a></li>
+        <li><a href="<?php echo base_url();?>news" >View News</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<? php echo base_url(); ?> news/create">Create News</a></li>
+        <li><a href="<?php echo base_url();?>news/create">Create News</a></li>
       </ul>
     </div>
   </div>
 </nav>
-                <h1><?php echo $title; ?></h1>
+                
